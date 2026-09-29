@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#08080c">
+<title>For Bhaiya — Private Birthday File</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#07070a;
+  --surface:#111117;
+  --surface2:#171720;
+  --text:#f7f4f1;
+  --muted:#a5a1ad;
+  --soft:#77727f;
+  --line:rgba(255,255,255,.09);
+  --violet:#8e6dff;
+  --violet2:#b09aff;
+  --rose:#df7da6;
+  --gold:#e8c98b;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100%;background:var(--bg)}
+body{
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+button{font:inherit;border:0;cursor:pointer}
+button:focus-visible{outline:2px solid var(--violet2);outline-offset:3px}
+.hidden{display:none!important}
+
+#app{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(111,77,255,.16),transparent 28%),
+    radial-gradient(circle at 88% 82%,rgba(220,90,139,.11),transparent 30%),
+    #07070a;
+}
+
+.grid{
+  position:absolute;
+  inset:0;
+  opacity:.035;
+  background-image:
+    linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);
+  background-size:44px 44px;
+  pointer-events:none;
+}
+
+.orb{
+  position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  filter:blur(90px);opacity:.22;pointer-events:none;
+}
+.orb.a{background:#7254ff;left:-120px;top:-100px}
+.orb.b{background:#d95f92;right:-130px;bottom:-100px}
+
+#particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:rgba(255,255,255,.65);
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  from{transform:translateY(110vh);opacity:0}
+  15%{opacity:.7}
+  85%{opacity:.7}
+  to{transform:translateY(-15vh);opacity:0}
+}
+
+.topbar{
+  position:fixed;z-index:50;top:0;left:0;right:0;
+  height:62px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  pointer-events:none;
+}
+.brand{
+  font-size:10px;letter-spacing:2.5px;font-weight:700;
+  color:#aaa5b1;
+}
+.brand strong{color:#fff}
+.progress{
+  display:flex;gap:6px;align-items:center;
+}
+.progress i{
+  width:5px;height:5px;border-radius:50%;
+  background:#3d3945;transition:.3s;
+}
+.progress i.active{width:18px;border-radius:5px;background:var(--violet)}
+
+.screen{
+  position:absolute;
+  inset:0;
+  padding:76px 22px 42px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(18px) scale(.99);
+  transition:opacity .55s ease,transform .55s ease;
+  scrollbar-width:none;
+}
+.screen::-webkit-scrollbar{display:none}
+.screen.active{
+  opacity:1;
+  pointer-events:auto;
+  transform:none;
+}
+.inner{
+  width:min(100%,470px);
+  min-height:100%;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-bottom:12px;
+}
+.eyebrow{
+  text-transform:uppercase;letter-spacing:3px;
+  color:#8f88a0;font-size:10px;font-weight:700;
+  margin-bottom:16px;text-align:center;
+}
+h1,h2,h3{font-family:"Playfair Display",serif}
+h1{font-size:clamp(42px,12vw,64px);line-height:.98}
+h2{font-size:clamp(31px,8vw,43px);line-height:1.05}
+p{color:var(--muted);font-size:14px;line-height:1.75}
+.center{text-align:center}
+.accent{color:var(--violet2);font-style:italic}
+.mini{
+  font-size:10px;color:var(--soft);letter-spacing:1.7px;
+  text-transform:uppercase;
+}
+.primary{
+  margin:24px auto 0;
+  padding:14px 24px;border-radius:999px;
+  background:#f5f2ef;color:#09090c;font-weight:700;font-size:13px;
+  box-shadow:0 14px 35px rgba(0,0,0,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.primary:active,.ghost:active,.round:active{transform:scale(.96)}
+.ghost{
+  margin:20px auto 0;padding:12px 20px;border-radius:999px;
+  background:rgba(255,255,255,.05);color:#ddd9e2;
+  border:1px solid var(--line);font-size:12px;
+}
+.card{
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+}
+.next{
+  align-self:center;margin-top:22px;
+  padding:13px 22px;border-radius:999px;
+  background:#f5f2ef;color:#09090c;font-weight:700;font-size:12px;
+}
+.small-note{text-align:center;margin-top:13px;color:#6f6b76;font-size:11px}
+
+/* intro */
+.file-id{font-size:10px;letter-spacing:3px;color:#625d6a;margin-bottom:28px;text-align:center}
+.envelope-wrap{width:250px;height:170px;margin:35px auto 28px;position:relative}
+.envelope{
+  position:absolute;inset:0;border-radius:15px;
+  background:linear-gradient(145deg,#1a1921,#0d0e12);
+  border:1px solid var(--line);
+  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 50px rgba(142,109,255,.08);
+}
+.envelope:after{
+  content:"";position:absolute;inset:0;border-radius:15px;
+  background:
+    linear-gradient(145deg,transparent 49%,rgba(255,255,255,.07) 50%,transparent 51%),
+    linear-gradient(215deg,transparent 49%,rgba(255,255,255,.07) 50%,transparent 51%);
+}
+.flap{
+  position:absolute;z-index:4;left:0;top:0;width:100%;height:92px;
+  background:#23222c;clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.envelope.open .flap{transform:rotateX(180deg)}
+.seal{
+  position:absolute;z-index:8;left:50%;top:57%;
+  transform:translate(-50%,-50%);
+  width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#a38cff,#6e50dc);
+  box-shadow:0 0 35px rgba(142,109,255,.45);
+  font-size:9px;letter-spacing:1.2px;font-weight:700;
+}
+
+/* access */
+.access{
+  padding:28px 22px;
+}
+.lock{
+  width:58px;height:58px;border-radius:50%;
+  display:grid;place-items:center;margin:0 auto 20px;
+  border:1px solid var(--line);
+  color:var(--violet2);font-size:20px;
+}
+.swipe{
+  height:62px;border-radius:999px;background:#0b0c10;
+  border:1px solid var(--line);position:relative;overflow:hidden;
+  margin-top:25px;
+}
+.swipe-label{
+  position:absolute;inset:0;display:grid;place-items:center;
+  color:#6f6b76;font-size:11px;letter-spacing:1px;
+}
+.swipe-handle{
+  position:absolute;z-index:2;left:4px;top:3px;
+  width:54px;height:54px;border-radius:50%;
+  background:#fff;color:#111;display:grid;place-items:center;
+  font-weight:700;touch-action:none;user-select:none;
+}
+
+/* complaints */
+.stack{display:grid;gap:10px;margin-top:24px}
+.complaint{
+  padding:18px;border-radius:19px;
+  background:rgba(255,255,255,.035);
+  border:1px solid var(--line);
+  text-align:left;
+  transition:transform .25s,border-color .25s;
+}
+.complaint:hover{transform:translateX(5px);border-color:rgba(142,109,255,.25)}
+.complaint .num{font-size:9px;letter-spacing:2px;color:#927bdf;font-weight:700;margin-bottom:7px}
+.complaint h3{font-family:"DM Sans",sans-serif;font-size:15px;margin-bottom:5px}
+.complaint p{font-size:12px;line-height:1.6}
+.verdict{
+  margin-top:12px;padding:18px;border-radius:19px;
+  background:linear-gradient(135deg,rgba(142,109,255,.13),rgba(223,125,166,.07));
+  border:1px solid rgba(142,109,255,.15);text-align:center;
+}
+.verdict b{display:block;margin-bottom:6px}
+
+/* gossip vault */
+.vault{
+  padding:24px;
+  position:relative;overflow:hidden;
+}
+.vault:before{
+  content:"";position:absolute;width:180px;height:180px;
+  border-radius:50%;background:rgba(142,109,255,.11);
+  filter:blur(50px);right:-80px;top:-80px;
+}
+.vault-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.status{font-size:9px;letter-spacing:1.7px;color:#9c8ee0}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#7de0a6;margin-right:5px}
+.gossip-list{display:grid;gap:9px}
+.gossip-item{
+  padding:13px 14px;border-radius:15px;background:#0d0e13;
+  border:1px solid rgba(255,255,255,.06);
+}
+.gossip-item b{font-size:11px}
+.gossip-item p{font-size:11px;line-height:1.55;margin-top:3px}
+.reveal-btn{margin-top:16px;width:100%;padding:12px;border-radius:13px;background:#171620;color:#c8c2d2;border:1px solid var(--line);font-size:11px}
+
+/* chat */
+.chat{padding:18px}
+.chat-head{display:flex;align-items:center;gap:11px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.avatar{
+  width:40px;height:40px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#8569ff,#d06d9b);
+  font-size:12px;font-weight:700;
+}
+.chat-name{font-size:13px;font-weight:700}.chat-sub{font-size:9px;color:#77727f;margin-top:2px}
+.messages{padding-top:13px}
+.msg{
+  max-width:84%;padding:10px 12px;border-radius:14px;
+  margin:8px 0;font-size:11px;line-height:1.5;
+}
+.msg.him{background:#1a1a22;border-bottom-left-radius:4px}
+.msg.her{background:#7359d8;margin-left:auto;border-bottom-right-radius:4px}
+.chat-foot{text-align:center;color:#6d6874;font-size:10px;margin-top:14px}
+
+
+/* Rosé × V photo wall */
+.duo-photo-wrap{
+  margin:25px 0 18px;
+  position:relative;
+}
+.duo-photo-wall{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  align-items:stretch;
+}
+.duo-photo{
+  position:relative;
+  min-height:260px;
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  background:#111117;
+  box-shadow:0 22px 60px rgba(0,0,0,.34);
+}
+.duo-photo img{
+  width:100%;
+  height:100%;
+  min-height:260px;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.92) contrast(1.03);
+}
+.duo-photo:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(5,5,8,.88),transparent 48%,rgba(255,255,255,.03));
+  pointer-events:none;
+}
+.photo-label{
+  position:absolute;
+  z-index:2;
+  left:14px;
+  bottom:13px;
+  font-size:10px;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+  color:#fff;
+  font-weight:700;
+}
+.photo-label span{
+  display:block;
+  margin-top:3px;
+  color:#b9b0c5;
+  font-size:8px;
+  letter-spacing:1.2px;
+  font-weight:500;
+}
+.photo-center{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(8,8,12,.84);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  color:#e4d9ff;
+  font-family:"Playfair Display",serif;
+  font-size:18px;
+}
+.photo-credit{
+  text-align:center;
+  color:#5f5b67;
+  font-size:8px;
+  line-height:1.5;
+  margin-top:9px;
+}
+.photo-credit a{color:#77707f;text-decoration:none}
+@media(max-width:380px){
+  .duo-photo{min-height:225px}
+  .duo-photo img{min-height:225px}
+}
+
+/* duo */
+.duo{display:grid;grid-template-columns:1fr 28px 1fr;gap:8px;align-items:center;margin:28px 0 20px}
+.person{
+  min-height:185px;padding:18px 10px;border-radius:22px;
+  border:1px solid var(--line);background:linear-gradient(145deg,#15151c,#0d0e12);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.person .sig{
+  width:72px;height:72px;border-radius:50%;display:grid;place-items:center;
+  color:#fff;font-family:"Playfair Display",serif;font-size:27px;
+  margin-bottom:14px;box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+.rose .sig{background:linear-gradient(135deg,#ef9bb8,#a84f74)}
+.v .sig{background:linear-gradient(135deg,#8065f1,#423178)}
+.person h3{font-family:"DM Sans",sans-serif;font-size:13px}
+.person p{font-size:10px;text-align:center;margin-top:5px}
+.plus{font-family:"Playfair Display",serif;color:#6f6978;font-size:23px;text-align:center}
+.duo-note{text-align:center;color:#aaa3b3;font-family:"Playfair Display",serif;font-style:italic;font-size:17px;line-height:1.55}
+
+/* letter */
+.letter{padding:24px;text-align:left}
+.letter p{margin-bottom:16px}
+.letter .opening{font-family:"Playfair Display",serif;font-size:20px;color:#f1edf4}
+.signature{color:#aa92f7;font-family:"Playfair Display",serif;font-style:italic;font-size:16px}
+
+/* memories */
+.memory-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:23px}
+.memory{
+  min-height:145px;padding:18px;border-radius:20px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#17151f,#0e0e13);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
+}
+.memory:before{
+  content:"";position:absolute;width:120px;height:120px;border-radius:50%;
+  background:rgba(142,109,255,.12);filter:blur(25px);top:-50px;right:-40px;
+}
+.memory:nth-child(2):before{background:rgba(223,125,166,.12)}
+.memory:nth-child(3):before{background:rgba(232,201,139,.10)}
+.memory:nth-child(4):before{background:rgba(142,109,255,.10)}
+.memory span{font-size:9px;letter-spacing:1.6px;color:#8c8497;text-transform:uppercase;position:relative}
+.memory h3{font-family:"DM Sans",sans-serif;font-size:13px;margin-top:6px;position:relative}
+.memory p{font-size:10px;line-height:1.5;margin-top:4px;position:relative}
+
+/* cake */
+.cake-area{height:250px;position:relative;margin:5px auto 0}
+.plate{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  width:245px;height:22px;border-radius:50%;background:#262431;
+  box-shadow:0 14px 30px rgba(0,0,0,.45);
+}
+.cake{
+  position:absolute;bottom:38px;left:50%;transform:translateX(-50%);
+  width:205px;height:86px;border-radius:18px 18px 28px 28px;
+  background:linear-gradient(180deg,#8d73ed,#5742b8);
+  box-shadow:0 22px 45px rgba(0,0,0,.45);
+}
+.cake:before{
+  content:"";position:absolute;left:0;right:0;top:18px;height:10px;
+  background:rgba(255,255,255,.35);border-radius:20px;
+}
+.cake-top{
+  position:absolute;bottom:112px;left:50%;transform:translateX(-50%);
+  width:180px;height:44px;border-radius:50%;background:#a995ff;
+}
+.candle{
+  position:absolute;bottom:142px;width:12px;height:48px;border-radius:6px;background:#f6edf4;z-index:3;
+}
+.candle.c1{left:calc(50% - 43px)}.candle.c2{left:calc(50% - 6px)}.candle.c3{left:calc(50% + 31px)}
+.flame{
+  position:absolute;width:14px;height:21px;left:-1px;top:-21px;
+  border-radius:50% 50% 45% 45%;background:#ffd56b;
+  box-shadow:0 0 20px #ffcb54;animation:flicker .65s infinite alternate;
+}
+@keyframes flicker{from{transform:scale(.84) rotate(-4deg)}to{transform:scale(1.1) rotate(4deg)}}
+.cake-area.blown .flame{display:none}
+.cake-area.blown .cake{filter:brightness(.92)}
+
+/* final */
+.final{
+  padding:31px 24px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(142,109,255,.13),transparent 48%),
+    rgba(255,255,255,.025);
+  text-align:center;
+}
+.final-line{width:50px;height:1px;background:#765ed4;margin:20px auto}
+.final p{font-size:13px}.final .primary{margin-top:25px}
+.final .big{font-family:"Playfair Display",serif;color:#f1edf3;font-size:18px;line-height:1.55}
+
+/* sound */
+.sound{
+  position:fixed;z-index:60;right:18px;top:14px;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:#c8c2d0;font-size:12px;pointer-events:auto;
+}
+
+/* confetti */
+.confetti{
+  position:fixed;z-index:100;width:6px;height:13px;top:-20px;
+  animation:fall 3.7s linear forwards;pointer-events:none;
+}
+@keyframes fall{to{transform:translateY(110vh) rotate(760deg);opacity:.9}}
+
+/* toast */
+#toast{
+  position:fixed;z-index:120;left:50%;bottom:24px;transform:translate(-50%,20px);
+  padding:10px 14px;border-radius:999px;background:#18171e;border:1px solid var(--line);
+  color:#d7d2dd;font-size:11px;opacity:0;pointer-events:none;transition:.3s;
+  white-space:nowrap;
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* mobile */
+@media(max-width:380px){
+  .screen{padding-left:16px;padding-right:16px}
+  .memory{min-height:132px}
+  .person{min-height:165px}
+  .letter{padding:20px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+  <div class="grid"></div>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+  <div id="particles"></div>
+
+  <div class="topbar">
+    <div class="brand"><strong>PRIVATE FILE</strong> / B</div>
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <button class="sound" id="soundBtn" aria-label="Toggle ambient sound">♪</button>
+
+  <!-- 01 -->
+  <section class="screen active" data-index="1" id="s1">
+    <div class="inner center">
+      <div class="file-id">FILE B-01 / CONFIDENTIAL</div>
+      <div class="eyebrow">A birthday delivery for one very specific person</div>
+      <h1>For my <span class="accent">Bhaiya.</span></h1>
+      <p style="max-width:340px;margin:18px auto 0">
+        This is not a message you can read in five seconds,
+        reply with “thank you” and disappear again.
+      </p>
+
+      <div class="envelope-wrap">
+        <div class="envelope" id="envelope">
+          <div class="flap"></div>
+          <div class="seal">OPEN</div>
+        </div>
+      </div>
+
+      <button class="primary" id="openBtn">Open your file</button>
+      <div class="small-note">Warning: contains gossip, complaints & unnecessary affection.</div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="screen" data-index="2" id="s2">
+    <div class="inner center">
+      <div class="card access">
+        <div class="lock">+</div>
+        <div class="eyebrow">Identity verification</div>
+        <h2>Wait, Bhaiya.</h2>
+        <p style="margin-top:10px">
+          Before entering this extremely important birthday file,
+          prove that you're actually the birthday boy.
+        </p>
+        <div class="swipe" id="swipe">
+          <div class="swipe-label">SWIPE TO ENTER</div>
+          <div class="swipe-handle" id="swipeHandle">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="screen" data-index="3" id="s3">
+    <div class="inner">
+      <div class="eyebrow">Official complaint department</div>
+      <h2 class="center">I have some<br>complaints.</h2>
+
+      <div class="stack">
+        <article class="complaint">
+          <div class="num">COMPLAINT 01</div>
+          <h3>The disappearing act.</h3>
+          <p>You randomly disappear for two or three business days and then return like nothing happened.</p>
+        </article>
+        <article class="complaint">
+          <div class="num">COMPLAINT 02</div>
+          <h3>“Bahna, ye dekho.”</h3>
+          <p>One random status caption somehow becomes a full investigation with evidence, commentary and follow-up.</p>
+        </article>
+        <article class="complaint">
+          <div class="num">COMPLAINT 03</div>
+          <h3>The random summons.</h3>
+          <p>One minute I am doing absolutely nothing. Next minute: “Bahna idhar aa.”</p>
+        </article>
+      </div>
+
+      <div class="verdict">
+        <b>Final verdict</b>
+        <p>Annoying sometimes. Still one of my favourite people to talk to.</p>
+      </div>
+
+      <button class="next" data-next="4">Continue →</button>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="screen" data-index="4" id="s4">
+    <div class="inner">
+      <div class="eyebrow">The evidence room</div>
+      <h2 class="center">Gossip<br>Vault.</h2>
+      <p class="center" style="max-width:340px;margin:12px auto 0">
+        Because apparently sending “Bahna ye dekho” is a complete communication system.
+      </p>
+
+      <div class="card vault" style="margin-top:24px">
+        <div class="vault-head">
+          <div class="mini">PRIVATE ARCHIVE</div>
+          <div class="status"><span class="dot"></span>OPEN</div>
+        </div>
+        <div class="gossip-list">
+          <div class="gossip-item">
+            <b>01 / Random status spotted</b>
+            <p>Immediate forwarding to the other person was considered legally necessary.</p>
+          </div>
+          <div class="gossip-item">
+            <b>02 / Discussion room activated</b>
+            <p>“Bahna idhar aa” was enough to summon the entire investigation team.</p>
+          </div>
+          <div class="gossip-item">
+            <b>03 / Unnecessary analysis</b>
+            <p>Could have ignored it. Obviously we did not.</p>
+          </div>
+        </div>
+        <button class="reveal-btn" id="vaultBtn">Open one more file</button>
+        <p id="vaultReveal" class="hidden" style="margin-top:12px;color:#b7adca;font-size:11px">
+          CASE CLOSED: the gossip was never the point. Talking to you was.
+        </p>
+      </div>
+
+      <button class="next" data-next="5">Continue →</button>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="screen" data-index="5" id="s5">
+    <div class="inner">
+      <div class="eyebrow">A completely normal conversation</div>
+      <h2 class="center">Our average<br>conversation.</h2>
+
+      <div class="card chat" style="margin-top:24px">
+        <div class="chat-head">
+          <div class="avatar">B</div>
+          <div>
+            <div class="chat-name">Bhaiya</div>
+            <div class="chat-sub">probably online</div>
+          </div>
+        </div>
+        <div class="messages">
+          <div class="msg him">Bahna ye dekho.</div>
+          <div class="msg her">WHAT is this?</div>
+          <div class="msg him">😂</div>
+          <div class="msg her">Fuck you Bhaiya.</div>
+          <div class="msg him">Bahna idhar aa.</div>
+          <div class="msg her">What happened now?</div>
+          <div class="msg him">Nothing. Just look at this.</div>
+          <div class="msg her">...you are impossible.</div>
+        </div>
+        <div class="chat-foot">Normal people have normal conversations. We missed that chapter.</div>
+      </div>
+
+      <button class="next" data-next="6">The duo file →</button>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="screen" data-index="6" id="s6">
+    <div class="inner center">
+      <div class="eyebrow">The only exception</div>
+      <h2>The duo nobody<br>asked for.</h2>
+
+      <div class="duo-photo-wrap">
+        <div class="duo-photo-wall">
+          <div class="duo-photo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Blackpink_Ros%C3%A9_Rimowa_1.jpg"
+              alt="Rosé"
+              loading="lazy">
+            <div class="photo-label">Rosé<span>the special exception</span></div>
+          </div>
+
+          <div class="duo-photo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/1/15/BTS%27s_V_20251004_01.jpg"
+              alt="V"
+              loading="lazy">
+            <div class="photo-label">V<span>the other half of the chaos</span></div>
+          </div>
+
+          <div class="photo-center">+</div>
+        </div>
+
+        <div class="photo-credit">
+          Photos from Wikimedia Commons, used under their listed Creative Commons licenses.
+          <br>Rosé: TV10 · V: 티비텐
+        </div>
+      </div>
+
+      <div class="duo-note">
+        “I'm a tomboy for everyone else.<br>
+        Somehow you got the Rosé version.”
+      </div>
+
+      <button class="next" data-next="7">Okay, serious part →</button>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="screen" data-index="7" id="s7">
+    <div class="inner">
+      <div class="eyebrow">More than a year of random conversations</div>
+      <h2 class="center">A little something<br>I actually mean.</h2>
+
+      <div class="card letter" style="margin-top:23px">
+        <p class="opening">But honestly, Bhaiya...</p>
+        <p>We've been talking for more than a year now, and somehow you became one of those people I can randomly tell things to without thinking too much about it.</p>
+        <p>Something happens to me and my first thought can literally be, “I need to tell Bhaiya this.”</p>
+        <p>Sometimes it is gossip. Sometimes someone's ridiculous status. Sometimes some completely unnecessary drama. Sometimes we are just talking about nothing.</p>
+        <p>But I like that.</p>
+        <p>Talking to you makes things feel lighter. Even when nothing important is happening, somehow the conversation itself becomes something I enjoy.</p>
+        <p>And yes, I still get annoyed when you disappear without warning. That complaint is permanently active.</p>
+        <p>But despite all the random chaos, I'm genuinely glad we met.</p>
+        <div class="signature">— Your favourite gossip partner</div>
+      </div>
+
+      <button class="next" data-next="8">There is one more thing →</button>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="screen" data-index="8" id="s8">
+    <div class="inner">
+      <div class="eyebrow">Memory department</div>
+      <h2 class="center">Things that make<br>this bond ours.</h2>
+
+      <div class="memory-grid">
+        <div class="memory">
+          <span>01 / Gossip</span>
+          <h3>“Bahna ye dekho.”</h3>
+          <p>Our unofficial opening line.</p>
+        </div>
+        <div class="memory">
+          <span>02 / Summons</span>
+          <h3>“Idhar aa.”</h3>
+          <p>Apparently I am always on call.</p>
+        </div>
+        <div class="memory">
+          <span>03 / Chaos</span>
+          <h3>Random discussions.</h3>
+          <p>Absolutely unnecessary. Still my favourite.</p>
+        </div>
+        <div class="memory">
+          <span>04 / Us</span>
+          <h3>More than a year.</h3>
+          <p>And somehow the conversations never get boring.</p>
+        </div>
+      </div>
+
+      <button class="next" data-next="9">Birthday protocol →</button>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="screen" data-index="9" id="s9">
+    <div class="inner center">
+      <div class="eyebrow">Birthday protocol activated</div>
+      <h2>Make a wish,<br>Bhaiya.</h2>
+      <p style="max-width:320px;margin:12px auto 0">Three candles. One birthday boy. Do not mess this up.</p>
+
+      <div class="cake-area" id="cakeArea">
+        <div class="cake-top"></div>
+        <div class="candle c1"><div class="flame"></div></div>
+        <div class="candle c2"><div class="flame"></div></div>
+        <div class="candle c3"><div class="flame"></div></div>
+        <div class="cake"></div>
+        <div class="plate"></div>
+      </div>
+
+      <button class="primary" id="blowBtn">Blow the candles</button>
+      <button class="next hidden" id="cakeNext" data-next="10">Final file →</button>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="screen" data-index="10" id="s10">
+    <div class="inner center">
+      <div class="card final">
+        <div class="eyebrow">FILE COMPLETE</div>
+        <h1>Happy Birthday,<br><span class="accent">Bhaiya.</span></h1>
+        <div class="final-line"></div>
+        <p class="big">Thank you for all the random conversations, all the gossip, all the “Bahna ye dekho” moments, all the completely unnecessary investigations, and even the occasional disappearing acts.</p>
+        <p style="margin-top:17px">More than a year of talking to someone online can sound like a small thing, but the little everyday conversations are exactly what make a bond feel real. Somehow, you became one of those people I can tell things to without having to prepare a whole explanation first.</p>
+        <p style="margin-top:17px">So on your birthday, I genuinely hope you get the kind of year that feels good from the inside — good people around you, peaceful days when you need them, exciting days when you want them, plenty of reasons to laugh, and memories that you'll actually want to keep.</p>
+        <p style="margin-top:17px">I hope you achieve the things you're quietly working towards, get surprised by some really good moments, and never forget that there are people who are genuinely happy that you exist.</p>
+        <p style="margin-top:17px">And yes, I am still officially requesting fewer random disappearances. Two or three business days is NOT an acceptable response time, Bhaiya.</p>
+        <p style="margin-top:17px">Stay the same chaotic, funny, annoying person who sends me random things and somehow turns a five-minute conversation into a whole gossip session.</p>
+        <p class="big" style="margin-top:19px">Love you, Bhaiya.</p>
+        <p class="big" style="margin-top:5px">And also… fuck you, Bhaiya.</p>
+        <p style="margin-top:14px">Birthday rule: you are allowed to laugh at this, but you are not allowed to disappear immediately after reading it.</p>
+        <button class="primary" id="finishBtn">Birthday mission complete</button>
+        <div id="finishText" class="hidden" style="margin-top:20px;color:#b6a9ca;font-size:11px;line-height:1.7">
+          PRIVATE NOTE: You are genuinely special to me, Bhaiya. Never forget that.
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(() => {
+  "use strict";
+
+  const screens = [...document.querySelectorAll(".screen")];
+  const progress = document.getElementById("progress");
+  const toast = document.getElementById("toast");
+  let current = 0;
+
+  // Progress dots
+  screens.forEach((_, i) => {
+    const dot = document.createElement("i");
+    dot.dataset.index = i;
+    progress.appendChild(dot);
+  });
+
+  function updateProgress(index){
+    [...progress.children].forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  }
+
+  function showScreen(number, smooth = true){
+    const index = Math.max(0, Math.min(number - 1, screens.length - 1));
+    current = index;
+
+    screens.forEach((screen, i) => {
+      screen.classList.toggle("active", i === index);
+      if(i === index && smooth) screen.scrollTop = 0;
+    });
+
+    updateProgress(index);
+  }
+
+  updateProgress(0);
+
+  // Buttons with data-next
+  document.querySelectorAll("[data-next]").forEach(btn => {
+    btn.addEventListener("click", () => showScreen(Number(btn.dataset.next)));
+  });
+
+  // Envelope
+  document.getElementById("openBtn").addEventListener("click", () => {
+    const env = document.getElementById("envelope");
+    env.classList.add("open");
+    setTimeout(() => showScreen(2), 850);
+  });
+
+  // Swipe verification
+  const track = document.getElementById("swipe");
+  const handle = document.getElementById("swipeHandle");
+  let dragging = false;
+  let startX = 0;
+  let completed = false;
+
+  function pointerX(e){
+    return e.touches ? e.touches[0].clientX : e.clientX;
+  }
+
+  function startDrag(e){
+    if(completed) return;
+    dragging = true;
+    startX = pointerX(e);
+  }
+
+  function moveDrag(e){
+    if(!dragging || completed) return;
+
+    const max = track.clientWidth - handle.offsetWidth - 8;
+    let distance = pointerX(e) - startX;
+    distance = Math.max(0, Math.min(distance, max));
+    handle.style.left = (4 + distance) + "px";
+
+    if(distance >= max * .78){
+      completed = true;
+      dragging = false;
+      handle.style.left = (max + 4) + "px";
+      setTimeout(() => showScreen(3), 280);
+    }
+  }
+
+  function endDrag(){
+    if(!dragging || completed) return;
+    dragging = false;
+    handle.style.left = "4px";
+  }
+
+  handle.addEventListener("mousedown", startDrag);
+  window.addEventListener("mousemove", moveDrag);
+  window.addEventListener("mouseup", endDrag);
+
+  handle.addEventListener("touchstart", startDrag, {passive:true});
+  window.addEventListener("touchmove", moveDrag, {passive:true});
+  window.addEventListener("touchend", endDrag);
+
+  // Gossip reveal
+  document.getElementById("vaultBtn").addEventListener("click", () => {
+    document.getElementById("vaultReveal").classList.remove("hidden");
+    document.getElementById("vaultBtn").textContent = "Evidence unlocked";
+    toastMsg("Evidence successfully uncovered.");
+  });
+
+  // Cake
+  document.getElementById("blowBtn").addEventListener("click", () => {
+    document.getElementById("cakeArea").classList.add("blown");
+    document.getElementById("blowBtn").classList.add("hidden");
+    document.getElementById("cakeNext").classList.remove("hidden");
+    confetti(70);
+    toastMsg("Birthday protocol complete.");
+  });
+
+  // Final
+  document.getElementById("finishBtn").addEventListener("click", () => {
+    document.getElementById("finishText").classList.remove("hidden");
+    confetti(45);
+    toastMsg("File completed successfully.");
+  });
+
+  // Ambient particles
+  const particleLayer = document.getElementById("particles");
+  for(let i = 0; i < 34; i++){
+    const p = document.createElement("span");
+    p.className = "particle";
+    p.style.left = (Math.random() * 100) + "%";
+    p.style.animationDuration = (8 + Math.random() * 13) + "s";
+    p.style.animationDelay = (-Math.random() * 15) + "s";
+    p.style.opacity = (0.15 + Math.random() * .55).toFixed(2);
+    p.style.transform = `scale(${0.5 + Math.random()})`;
+    particleLayer.appendChild(p);
+  }
+
+  // Confetti
+  function confetti(count){
+    const colors = ["#8e6dff","#df7da6","#f5f2ef","#e8c98b","#b09aff"];
+    for(let i = 0; i < count; i++){
+      const piece = document.createElement("span");
+      piece.className = "confetti";
+      piece.style.left = (Math.random() * 100) + "vw";
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDelay = (Math.random() * 1.2) + "s";
+      piece.style.transform = `rotate(${Math.random()*180}deg)`;
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 4500);
+    }
+  }
+
+  // Toast
+  let toastTimer;
+  function toastMsg(message){
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add("show");
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+  }
+
+  // Tiny ambient sound generated in-browser; no audio file required.
+  let audioCtx = null;
+  let soundOn = false;
+
+  function startAmbient(){
+    try{
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      if(audioCtx.state === "suspended") audioCtx.resume();
+
+      const gain = audioCtx.createGain();
+      gain.gain.value = 0.018;
+      gain.connect(audioCtx.destination);
+
+      const osc = audioCtx.createOscillator();
+      osc.type = "sine";
+      osc.frequency.value = 196;
+      osc.connect(gain);
+      osc.start();
+
+      soundOn = true;
+      document.getElementById("soundBtn").textContent = "♫";
+    }catch(err){
+      toastMsg("Sound is not available on this browser.");
+    }
+  }
+
+  function stopAmbient(){
+    if(audioCtx){
+      audioCtx.close();
+      audioCtx = null;
+    }
+    soundOn = false;
+    document.getElementById("soundBtn").textContent = "♪";
+  }
+
+  document.getElementById("soundBtn").addEventListener("click", () => {
+    if(soundOn) stopAmbient();
+    else startAmbient();
+  });
+
+
+  // Photo fallback: keep the card elegant if an external image cannot load.
+  document.querySelectorAll(".duo-photo img").forEach(img => {
+    img.addEventListener("error", () => {
+      img.style.display = "none";
+      const card = img.closest(".duo-photo");
+      if(card) card.classList.add("image-unavailable");
+    });
+  });
+
+  // Keyboard support on desktop
+  window.addEventListener("keydown", e => {
+    if(e.key === "ArrowRight" && current < screens.length - 1){
+      showScreen(current + 2);
+    }
+    if(e.key === "ArrowLeft" && current > 0){
+      showScreen(current);
+    }
+  });
+
+  // Prevent accidental browser pull/overscroll while the app is open.
+  document.addEventListener("touchmove", e => {
+    const active = document.querySelector(".screen.active");
+    if(active && active.scrollHeight <= active.clientHeight){
+      e.preventDefault();
+    }
+  }, {passive:false});
+})();
+</script>
+
+</body>
+</html>
